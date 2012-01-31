@@ -7,8 +7,9 @@
 				"caption": "Extempore",
 				"children":
 				[
-					{ "caption": "Connect..", "command": "extempore_connect" },
-					{ "caption": "Send..", "command": "extempore_send" }
+					{ "caption": "Connect...", "command": "extempore_connect" },
+					{ "caption": "Disconnect...", "command": "extempore_disconnect" },
+					{ "caption": "Evaluate...", "command": "extempore_evaluate" }
 				]
 			}
 		]
