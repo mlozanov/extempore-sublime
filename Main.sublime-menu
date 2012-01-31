@@ -1,0 +1,16 @@
+[
+	{
+		"id": "tools",
+		"children":
+		[
+			{
+				"caption": "Extempore",
+				"children":
+				[
+					{ "caption": "Connect..", "command": "extempore_connect" },
+					{ "caption": "Send..", "command": "extempore_send" }
+				]
+			}
+		]
+	}
+]
