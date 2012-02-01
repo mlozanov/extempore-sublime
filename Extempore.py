@@ -23,9 +23,8 @@ class ExtemporeConnection:
 
 class ExtemporeConnectCommand(sublime_plugin.TextCommand):
 	def run(self,edit):
-		#ExtemporeConnection.init()
 		try:
-			ExtemporeConnection.s = socket.socket(AF_INET, SOCK_STREAM)
+			ExtemporeConnection.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 			ExtemporeConnection.s.settimeout(5)
 			ExtemporeConnection.s.connect((ExtemporeConnection.hostname, ExtemporeConnection.port))
 			data = ExtemporeConnection.s.recv(1024)
@@ -35,7 +34,6 @@ class ExtemporeConnectCommand(sublime_plugin.TextCommand):
 
 class ExtemporeDisconnectCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
-		# ExtemporeConnection.close()
 		try:
 			ExtemporeConnection.s.close()
 		except socket.error, e:
@@ -46,7 +44,6 @@ class ExtemporeEvaluateCommand(sublime_plugin.TextCommand):
 		sublime_plugin.TextCommand.__init__(self, view)
 
 	def send(self, sock, string):
-		print repr(string)
 		count = sock.send(string + '\r\n')
 		return sock.recv(512)
 		
