@@ -6,21 +6,6 @@ class ExtemporeConnection:
 	port = 7099
 	s = None
 
-	def init(self, host = 'localhost', port = 7099):
-		try:
-			s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-			s.settimeout(5)
-			s.connect((host, port))
-		except socket.error, e:
-			print repr(e)
-
-	def close(self):
-		try:
-			s.close()
-		except socket.error, e:
-			print repr(e)
-
-
 class ExtemporeConnectCommand(sublime_plugin.TextCommand):
 	def run(self,edit):
 		try:
@@ -44,12 +29,18 @@ class ExtemporeEvaluateCommand(sublime_plugin.TextCommand):
 		sublime_plugin.TextCommand.__init__(self, view)
 
 	def send(self, sock, string):
+
 		count = sock.send(string + '\r\n')
 		return sock.recv(512)
 		
-	def run(self, edit):
+	def run(self, edit):			
 		sels = self.view.sel()
 		sock = ExtemporeConnection.s
+
+		if not sock:
+			print 'trying to connect'
+			self.view.run_command('extempore_connect')
+			sock = ExtemporeConnection.s
 
 		if sock:
 			for sel in sels:
