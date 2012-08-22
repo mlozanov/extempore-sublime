@@ -1,0 +1,113 @@
+{ "name": "Extempore",
+  "scopeName": "source.extempore",
+  "fileTypes": ["xtm"],
+  "patterns": [
+    {
+        "captures": {
+            "1": {
+                "name": "punctuation.definition.comment.extempore"
+            }
+        }, 
+        "match": "(;).*$\\n?", 
+        "name": "comment.line.semicolon.extempore"
+    }, 
+    {
+        "captures": {
+            "1": {
+                "name": "storage.type.function-type.extempore"
+            }, 
+            "3": {
+                "name": "entity.name.function.extempore"
+            }
+        }, 
+            "match": "\\((define|bind-func)(\\s+)((\\w|\\-|\\!|\\?)+)", 
+            "name": "meta.function.extempore"
+    },
+    {
+        "captures": {
+            "1": {
+                "name": "storage.type.function-type.extempore"
+            }, 
+            "3": {
+                "name": "entity.name.function.extempore"
+            },
+            "6": {
+                "name": "support.type.extempore"
+            }
+        }, 
+            "match": "\\((bind-alias|bind-type|bind-val)(\\s+)((\\w|\\-|\\!|\\?)+)(\\s+)(([^ \t\\)])+)",
+            "name": "meta.type.binding.extempore"
+    },
+    {
+        "captures": {
+            "1": {
+                "name": "punctuation.definition.constant.extempore"
+            }
+        }, 
+        "match": "(#)(\\w|[\\\\+-=<>'\"&#])+", 
+        "name": "constant.character.extempore"
+    }, 
+    {
+        "captures": {
+            "1": {
+                "name": "punctuation.definition.variable.extempore"
+            }, 
+            "3": {
+                "name": "punctuation.definition.variable.extempore"
+            }
+        }, 
+        "match": "(\\*)(\\S*)(\\*)",
+        "name": "variable.other.global.extempore"
+    }, 
+    {
+        "match": ":([^ \t\\)])+", 
+        "name": "support.type.extempore"
+    }, 
+    {
+        "match": "\\b(case|do|dotimes|let|letrec|if|else|and|or|not)\\b", 
+        "name": "keyword.control.extempore"
+    }, 
+    {
+        "match": "\\b(set!|pset!|pref|pref-ptr|tset!|tref|tref-ptr|tfill!|aset!|aref|aref-ptr|afill!|vset!|vref|vref-ptr|vfill!)\\s", 
+        "name": "keyword.getset.extempore"
+    }, 
+    {
+        "match": "(=|<>|<=|>=)", 
+        "name": "support.equality.extempore"
+    }, 
+    {
+        "match": "\\b(null|nil)\\b", 
+        "name": "constant.language.extempore"
+    }, 
+    {
+        "match": "\\b(cons|car|cdr|cond|lambda|quote|eval|append|list|vector|member|load|begin|map|apply|for-each)\\b", 
+        "name": "support.function.extempore"
+    }, 
+    {
+        "match": "\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)(L|l|UL|ul|u|U|F|f|ll|LL|ull|ULL)?\\b", 
+        "name": "constant.numeric.extempore"
+    }, 
+    {
+        "begin": "\"", 
+        "beginCaptures": {
+            "0": {
+                "name": "punctuation.definition.string.begin.extempore"
+            }
+        }, 
+        "end": "\"", 
+        "endCaptures": {
+            "0": {
+                "name": "punctuation.definition.string.end.extempore"
+            }
+        }, 
+        "name": "string.quoted.double.extempore", 
+        "patterns": [
+            {
+                "match": "\\\\.", 
+                "name": "constant.character.escape.extempore"
+            }
+        ]
+    }
+  ],
+  "uuid": "f429bbaf-0876-4820-8b1c-12a6e234717e"
+}
